@@ -1,0 +1,66 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!-- Global stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet"
+          type="text/css">
+    <link href="{% static "css/styles.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/bootstrap_limitless.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/layout.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/components.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/colors.min.css" %}" rel="stylesheet" type="text/css">
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <!-- /global stylesheets -->
+</head>
+
+<body>
+{% block main_navbar %} {% endblock %}
+
+<div class="page-content">
+
+    {% block main_sidebar %} {% endblock %}
+
+
+    <div class="content-wrapper">
+        {% block main_header %} {% endblock %}
+
+
+        <div class="content">
+            <div class="row">
+                {% block main_content %} {% endblock %}
+            </div>
+        </div>
+        {% block main_footer %} {% endblock %}
+    </div>
+</div>
+
+
+<!-- Core JS files -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
+<script src="{% static "js/blockui.min.js" %}"></script>
+
+<!-- /core JS files -->
+
+<!-- Theme JS files -->
+<script src="{% static "js/d3.min.js" %}"></script>
+<script src="{% static "js/d3_tooltip.js" %}"></script>
+<script src="{% static "js/switchery.min.js" %}"></script>
+<script src="{% static "js/bootstrap_multiselect.js" %}"></script>
+<script src="{% static "js/moment.min.js" %}"></script>
+<script src="{% static "js/daterangepicker.js" %}"></script>
+
+<script src="{% static "js/app.js" %}"></script>
+<script src="{% static "js/dashboard.js" %}"></script>
+<script src="{% static "js/login.js" %}"></script>
+<script src="{% static "js/uniform.min.js" %}"></script>
+<!-- /theme JS files -->
+</body>
+</html>
