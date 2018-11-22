@@ -6,8 +6,8 @@
 						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">
                             {% if request.get_full_path == '/'%} Home
                             {% elif request.get_full_path == '/category/index/'%}Category
-                            {% elif request.get_full_path == '/admin/blog-post/index/'%}BlogPost
-                            {% elif request.get_full_path == '/admin/comment/index/'%} Comment
+                            {% elif request.get_full_path == '/blog-post/index/'%}BlogPost
+                            {% elif request.get_full_path == '/comments/index/'%} Comment
                             {% elif request.get_full_path == '/admin/category/create/'%} Add Category
                             {% endif %}
                         </span></h4>
@@ -24,6 +24,8 @@
 							<span class="breadcrumb-item active">
 								{% if request.get_full_path == '/' %} Home
 								{% elif request.get_full_path == '/category/index/'%} Category
+								{% elif request.get_full_path == '/blog-post/index/'%}BlogPost
+								{% elif request.get_full_path == '/comments/index/'%} Comments
 								{% endif %}
 							</span>
 						</div>

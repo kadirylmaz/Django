@@ -29,6 +29,8 @@
         <option value="$MODULE_DIR$/templates/main" />
         <option value="$MODULE_DIR$/templates/sections" />
         <option value="$MODULE_DIR$/templates/sections/category" />
+        <option value="$MODULE_DIR$/templates/sections/blog_post" />
+        <option value="$MODULE_DIR$/templates/sections/comments" />
       </list>
     </option>
   </component>

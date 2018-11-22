@@ -1,0 +1,22 @@
+{% extends "admin_main.html" %}
+{% load staticfiles %}
+
+{% block main_navbar %}
+ {% include "main/main_navbar.html" %}
+{% endblock %}
+
+{% block main_sidebar %}
+    {% include "main/main_sidebar.html" %}
+{% endblock %}
+
+{% block main_header %}
+    {% include "main/main_header.html" %}
+{% endblock %}
+
+    {% block main_content %}
+        {% include "sections/comments/comments_index.html" %}
+    {% endblock %}
+
+{% block main_footer %}
+    {% include "main/main_footer.html" %}
+{% endblock %}
