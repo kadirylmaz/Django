@@ -4,13 +4,13 @@
 				<div class="page-header-content header-elements-md-inline">
 					<div class="page-title d-flex">
 						<h4><i class="icon-arrow-left52 mr-2"></i> <span class="font-weight-semibold">
-                            {% if request.get_full_path == '/admin/'%} Home
-                            {% elif request.get_full_path == '/admin/category/index/'%}Category
+                            {% if request.get_full_path == '/'%} Home
+                            {% elif request.get_full_path == '/category/index/'%}Category
                             {% elif request.get_full_path == '/admin/blog-post/index/'%}BlogPost
                             {% elif request.get_full_path == '/admin/comment/index/'%} Comment
                             {% elif request.get_full_path == '/admin/category/create/'%} Add Category
                             {% endif %}
-                        </span>Dashboard</h4>
+                        </span></h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
 					</div>
 
@@ -21,7 +21,11 @@
 					<div class="d-flex">
 						<div class="breadcrumb">
 							<a href="{% url 'admin_home' %}" class="breadcrumb-item"><i class="icon-home2 mr-2"></i> Home</a>
-							<span class="breadcrumb-item active">Dashboard</span>
+							<span class="breadcrumb-item active">
+								{% if request.get_full_path == '/' %} Home
+								{% elif request.get_full_path == '/category/index/'%} Category
+								{% endif %}
+							</span>
 						</div>
 
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>

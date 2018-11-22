@@ -13,5 +13,5 @@ def admin_home(request):
 
 
 def category_index(request):
-	args['category_list'] = category_list = Category.objects.all()
+	args['category_list'] = Category.objects.all()
 	return render(request, 'admin_category_index.html', args)
