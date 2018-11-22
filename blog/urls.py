@@ -18,5 +18,7 @@ from django.contrib import admin
 from blog_post import views as blog_views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', blog_views.admin_home, name="admin_home")
+    url(r'^$', blog_views.admin_home, name="admin_home"),
+    url(r'^category/index/$', blog_views.category_index, name="admin_category_index")
+
 ]

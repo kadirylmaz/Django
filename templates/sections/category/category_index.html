@@ -1,0 +1,60 @@
+{% load staticfiles %}
+{% block main_content %}
+	<div id="main" style="width: 100%;">
+		<div class="card">
+			<div class="card-header header-elements-inline">
+				<h5 class="card-title">Category List</h5>
+				<div class="header-elements">
+					<div class="list-icons">
+						<a class="list-icons-item" data-action="collapse"></a>
+						<a class="list-icons-item" data-action="reload"></a>
+						<a class="list-icons-item" data-action="remove"></a>
+					</div>
+				</div>
+			</div>
+
+			<div class="card-body">
+
+				<a href="" data-toggle="modal" data-target=".category_add_modal" class="btn btn-primary"
+				   style="float: right" type="button">Add Category</a>
+			</div>
+
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+					<tr>
+						<th>ID</th>
+						<th>Category Name</th>
+						<th>Added Date</th>
+						<th>IsActive</th>
+						<th>Operations</th>
+					</tr>
+					</thead>
+					<tbody>
+					{% for category in category_list %}
+						<tr>
+							<td>{{ category.id }}</td>
+							<td>{{ category.category_name }}</td>
+							<td>{{ category.added_date }}</td>
+							<td>{{ category.is_activate }}</td>
+							<td>
+								<i class="fa fa-edit mr-2"></i>
+								<a class="btn btn-danger" data-toggle="modal"
+								   id="#category_delete_button_{{ category.id }}"
+								   data-target=".category_delete_modal_{{ category.id }}" type="button"
+								   data-id="{{ category.id }}">Delete
+								</a>
+								<a class="btn btn-success" data-toggle="modal"
+								   id="category_update_button_{{ category.id }}"
+								   data-target=".category_update_modal_{{ category.id }}" type="button"
+								   data-id="{{ category.id }}">Update</a>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}
+
