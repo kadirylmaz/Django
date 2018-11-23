@@ -2,7 +2,8 @@
 from __future__ import unicode_literals
 from .forms import LoginForm
 from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+
 # Create your views here.
 args = {}
 
@@ -16,3 +17,8 @@ def login_view(request):
 		login(request, user)
 		return redirect('/')
 	return render(request, 'sections/accounts/login.html', args)
+
+
+def logout_view(request):
+	logout(request)
+	return redirect('accounts:login')
