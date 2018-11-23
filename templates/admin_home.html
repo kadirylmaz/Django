@@ -15,7 +15,9 @@
 {% endblock %}
 
 {% block main_content %}
-
+	<span class="breadcrumb-item active">
+		Hosgeldiniz, {{ request.user.get_full_name }}
+	</span>
 {% endblock %}
 
 {% block main_footer %}

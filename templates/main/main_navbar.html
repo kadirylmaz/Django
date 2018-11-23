@@ -31,7 +31,7 @@
 				<li class="nav-item dropdown dropdown-user">
 					<a href="#" class="navbar-nav-link dropdown-toggle" data-toggle="dropdown">
 						<img src="{% static "img/Adsız.png" %}" class="rounded-circle" alt="">
-						<span>Kadir</span>
+						<span> {{ request.user.get_full_name }}</span>
 					</a>
 
 					<div class="dropdown-menu dropdown-menu-right">
