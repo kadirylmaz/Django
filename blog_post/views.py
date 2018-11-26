@@ -32,9 +32,9 @@ def category_add(request):
 	if request.POST:
 		category_name = request.POST.get('category_name', '')
 		is_active = request.POST.get('is_active', 1)
-		current_category = request.POST.get('id')
+
 		try:
-			new_category = Category.objects.get(id__exact=current_category)
+			new_category = Category.objects.get(id=request.POST.get('category_id'))
 		except:
 			new_category = None
 		if new_category is not None:

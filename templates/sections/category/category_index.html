@@ -1,6 +1,67 @@
 {% load staticfiles %}
 {% block main_content %}
 	<div id="main" style="width: 100%;">
+		<div class="modal fade category_add_modal" tabindex="-1">
+						<div class="modal-dialog modal-md">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Add Category</h5>
+									<button type="button" class="close" data-dismiss="modal">&times;</button>
+								</div>
+
+								<div class="modal-body">
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6">
+												<label class="ml-sm-2">Category Name</label>
+												<input type="text" placeholder="Category name"
+													   class="form-control"
+													   name="category_name"
+													   id="category_name"
+															   required>
+											</div>
+										</div>
+									</div>
+
+									<div class="modal-footer">
+										{% csrf_token %}
+										<a class="btn btn-primary bg-400 ml-sm-2 mb-sm-0" id="category_add_button"
+										   data-dismiss="modal">
+											Save
+										</a>
+										<button class="btn bg-light" data-dismiss="modal">
+											Cancel
+										</button>
+										<script type="text/javascript">
+											$('#category_add_button').click(function (e) {
+												e.preventDefault();
+												e.stopImmediatePropagation();
+												var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+												var category_name = $("#category_name").val();
+
+												$.ajax
+												({
+													url: '/category/add/',
+													data: {
+														'csrfmiddlewaretoken': csrftoken,
+														'category_name': category_name
+													},
+													type: 'post',
+													success: function (result) {
+														$('#main').html(result);
+														$('.category_add_modal').remove();
+														$('.modal-backdrop').remove();
+														$('body').removeClass("modal-open");
+
+													}
+												});
+											});
+										</script>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 		<div class="card">
 			<div class="card-header header-elements-inline">
 				<h5 class="card-title">Category List</h5>
@@ -102,7 +163,8 @@
 										</a>
 
 										<div class="dropdown-menu dropdown-menu-right">
-											<a href="#" class="dropdown-item"><i class="icon-pen6 mr-3 icon-1x"></i>
+											<a href="#" data-toggle="modal"
+											   data-target=".category_update_modal_{{ category.id }}" data-id="{{ category.id }}" class="dropdown-item"><i class="icon-pen6 mr-3 icon-1x"></i>
 												Update</a>
 											<a href="#" class="dropdown-item" data-toggle="modal"
 											   id="#category_delete_button_{{ category.id }}" data-target=".category_delete_modal_{{ category.id }}"
@@ -170,69 +232,78 @@
 								</div>
 							</div>
 						</div>
-					{% endfor %}
-					<div class="modal fade category_add_modal" tabindex="-1">
-						<div class="modal-dialog modal-md">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title">Add Category</h5>
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-								</div>
-
-								<div class="modal-body">
-									<div class="form-group">
-										<div class="row">
-											<div class="col-sm-6">
-												<label class="ml-sm-2">Category Name</label>
-												<input type="text" placeholder="Category name"
+						<div class="modal fade category_update_modal_{{ category.id }}" id="update" tabindex="-1"
+							 role="dialog">
+							<div class="modal-dialog modal-md">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title">Update Category</h5>
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+									</div>
+									<input type="hidden" id="rid" value="0">
+									<div class="modal-body">
+										<div class="form-group">
+											<div class="row">
+												<div class="col-sm-6">
+													<label class="ml-sm-2">Category Name</label>
+													<input type="text" placeholder="Category name"
 													   class="form-control"
 													   name="category_name"
-													   id="category_name"
-													   value={{ category.category_name }}
+													   id="category_name_{{ category.id }}"
+														   value="{{ category.category_name }}"
 															   required>
+													<input type="text" class="form-control"
+														   name="category_id"
+														   value="{{ category.id }}"
+														   id="category_id_{{ category.id }}"
+														   style="display:none">
+												</div>
 											</div>
 										</div>
-									</div>
 
-									<div class="modal-footer">
-										{% csrf_token %}
-										<a class="btn btn-primary bg-400 ml-sm-2 mb-sm-0" id="category_add_button"
-										   data-dismiss="modal">
-											Save
-										</a>
-										<button class="btn bg-light" data-dismiss="modal">
-											Cancel
-										</button>
-										<script type="text/javascript">
-											$('#category_add_button').click(function (e) {
-												e.preventDefault();
-												e.stopImmediatePropagation();
-												var csrftoken = $("[name=csrfmiddlewaretoken]").val();
-												var category_name = $("#category_name").val();
+										<div class="modal-footer">
+											<a class="btn btn-success ml-sm-2 mb-sm-0" type="button"
+											   data-dismiss="modal" id="category_update_button_{{ category.id }}">
+												Update
+											</a>
+											<script type="text/javascript">
+												$('#category_update_button_{{ category.id }}').click(function (e) {
+													e.preventDefault();
+													e.stopImmediatePropagation();
 
-												$.ajax
-												({
-													url: '/category/add/',
-													data: {
-														'csrfmiddlewaretoken': csrftoken,
-														'category_name': category_name
-													},
-													type: 'post',
-													success: function (result) {
-														$('#main').html(result);
-														$('.category_add_modal').remove();
-														$('.modal-backdrop').remove();
-														$('body').removeClass("modal-open");
+													var csrftoken = $("[name=csrfmiddlewaretoken]").val();
+													var category_id = $('#category_id_{{ category.id }}').val();
+													var category_name = $('#category_name_{{ category.id }}').val();
 
-													}
+
+													$.ajax
+													({
+														url: '/category/add/',
+														type: 'post',
+														data: {
+															'csrfmiddlewaretoken': csrftoken,
+															'category_id': category_id,
+															'category_name': category_name
+														},
+
+														success: function (result) {
+															$("#main").html(result);
+															$('.modal-backdrop').remove();
+															$('body').removeClass("modal-open");
+
+														}
+													});
 												});
-											});
-										</script>
+											</script>
+											<button class="btn bg-light" data-dismiss="modal">
+												İptal
+											</button>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					{% endfor %}
 					</tbody>
 				</table>
 			</div>
