@@ -8,7 +8,8 @@
                             {% elif request.get_full_path == '/category/index/'%}Category
                             {% elif request.get_full_path == '/blog-post/index/'%}BlogPost
                             {% elif request.get_full_path == '/comments/index/'%} Comment
-                            {% elif request.get_full_path == '/admin/category/create/'%} Add Category
+                            {% elif request.get_full_path == '/category/create/'%} Add Category
+							{% elif request.get_full_path == '/profile/index/'%} Profile
                             {% endif %}
                         </span></h4>
 						<a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
@@ -26,6 +27,7 @@
 								{% elif request.get_full_path == '/category/index/'%} Category
 								{% elif request.get_full_path == '/blog-post/index/'%}BlogPost
 								{% elif request.get_full_path == '/comments/index/'%} Comments
+								{% elif request.get_full_path == '/profile/index/'%} Profile
 								{% endif %}
 
 							</span>

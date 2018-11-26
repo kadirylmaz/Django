@@ -1,0 +1,217 @@
+{% load staticfiles %}
+{% block main_content %}
+<div id="main">
+
+<!-- Content area -->
+	<div class="content">
+
+		<!-- Inner container -->
+		<div class="d-md-flex align-items-md-start">
+
+			<!-- Left sidebar component -->
+			<div class="sidebar sidebar-light bg-transparent sidebar-component sidebar-component-left wmin-300 border-0 shadow-0 sidebar-expand-md">
+
+				<!-- Sidebar content -->
+				<div class="sidebar-content" id="profile_sidebar_content">
+
+					<!-- Navigation -->
+					<div class="card">
+						<div class="card-header header-elements-inline">
+							<h6>Profile overview</h6>
+							<div class="header-elements">
+								<div class="list-icons">
+			                        <a class="list-icons-item" data-action="collapse"></a>
+			                    </div>
+		                    </div>
+						</div>
+
+						<div class="card-bod text-center card-img-top" style="background-image: url(http://demo.interface.club/limitless/assets/images/bg.png); background-size: contain; padding-top: 40px;">
+							<form method="post" enctype="multipart/form-data" id="change_profile_image_form">
+								<input type="hidden" name="csrfmiddlewaretoken" value="CJWWv4Iol6UVIkSFVNzq1hJPMPeKbGp7wpXKsIsnWXKgHAmskTvJZ8UQ34X4RFIK">
+								<div class="card-img-actions d-inline-block mb-3">
+
+										<img class="img-fluid rounded-circle" src="{% static "img/Adsız.png" %}" width="170" height="170">
+
+										<div class="card-img-actions-overlay rounded-circle">
+
+												<a id="upload_link" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
+													<i class="icon-pen6"></i>
+												</a>
+
+
+										</div>
+									</div>
+									<h6 class="font-weight-semibold mb-0">Kadir Yılmaz</h6>
+									<span class="d-block opacity-75">Admin</span>
+
+							</form>
+
+				        </div>
+					</div>
+
+					<div class="card">
+
+						<div class="card-body p-0">
+							<ul class="nav nav-sidebar mb-2">
+
+								<li class="nav-item-header">Navigation</li>
+
+								<li class="nav-item">
+									<a class="nav-link cursor-pointer user-profile-page active">
+										<i class="icon-user"></i>
+										 My profile
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link cursor-pointer user-profile-edit-page ">
+										<i class="icon-calendar3"></i>
+										Schedule
+										<span class="font-size-sm font-weight-normal opacity-75 ml-auto">02:56pm</span>
+									</a>
+								</li>
+
+								<li class="nav-item-divider"></li>
+
+								<li class="nav-item">
+									<a href="{% url 'accounts:logout' %}" class="nav-link">
+										<i class="icon-switch2"></i>
+										Logout
+									</a>
+								</li>
+
+							</ul>
+						</div>
+					</div>
+					<!-- /navigation -->
+
+				</div>
+				<!-- /sidebar content -->
+
+			</div>
+			<!-- /left sidebar component -->
+
+
+			<!-- Right content -->
+			<div class="tab-content w-100 overflow-auto">
+				<div class="tab-pane fade active show" id="profile">
+
+					<!-- Sales stats -->
+					<div class="card">
+						<div class="card-header header-elements-sm-inline">
+							<h4 class="card-title">My profile</h4>
+						</div>
+					</div>
+					<!-- /sales stats -->
+
+					<div class="clearfix"></div>
+					<!-- Invoices -->
+					<div class="card">
+						<div class="card-body">
+							<div class="row" style="overflow: hidden">
+								<div class="col-md-12">
+
+
+
+				<div id="my-profile-wrapper">
+
+					<fieldset>
+						<h5>Personal information</h5>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label font-weight-bold">First name</label>
+							<div class="col-lg-9">
+								<div class="input-group">
+									<span class="input-group-prepend">
+										Kadir
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label font-weight-bold">Last name</label>
+							<div class="col-lg-9">
+								<div class="input-group">
+									<span class="input-group-prepend">
+										Yılmaz
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label font-weight-bold">Date of birth</label>
+							<div class="col-lg-9">
+								<div class="input-group">
+									<span class="input-group-prepend">
+										Dec. 1, 1994
+									</span>
+								</div>
+							</div>
+						</div>
+
+					</fieldset>
+
+					<hr>
+
+					<fieldset>
+						<h5>Address information:</h5>
+
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label font-weight-bold">Country:</label>
+							<div class="col-lg-9">
+									TR
+								<span class="input-group-prepend">
+
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label font-weight-bold">Province:</label>
+							<div class="col-lg-9">
+								<span class="input-group-prepend">
+									 Bakırkoy
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label font-weight-bold">City:</label>
+							<div class="col-lg-9">
+								<span class="input-group-prepend">
+									İSTANBUL
+								</span>
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<label class="col-lg-3 col-form-label font-weight-bold">Address:</label>
+							<div class="col-lg-9">
+								<span class="input-group-prepend">
+									Karakol Sok. Askent Sitesi 3.Blok Daire 13 No:34 Yenimahalle/İstanbul
+								</span>
+							</div>
+						</div>
+
+					</fieldset>
+
+					<hr>
+
+				</div>
+
+					<div class="clearfix"></div>
+
+			    </div>
+			</div>
+			<!-- /right content -->
+
+		</div>
+		<!-- /inner container -->
+					</div>
+				</div>
+			</div>
+		</div>
+	<!-- /content area -->
+
+
+
+</div>
+{% endblock %}

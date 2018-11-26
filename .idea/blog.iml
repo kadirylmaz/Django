@@ -33,6 +33,7 @@
         <option value="$MODULE_DIR$/templates/sections/blog_post" />
         <option value="$MODULE_DIR$/templates/sections/comments" />
         <option value="$MODULE_DIR$/templates/sections/accounts" />
+        <option value="$MODULE_DIR$/templates/sections/profile" />
       </list>
     </option>
   </component>
