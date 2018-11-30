@@ -1,0 +1,22 @@
+{% extends "site_main.html" %}
+{% load staticfiles %}
+
+
+{% block main_navbar %}
+	{% include "site_main/site_main_navbar.html" %}
+{% endblock %}
+
+{% block main_sidebar %}
+	{% include "site_main/site_main_sidebar.html" %}
+{% endblock %}
+
+{% block main_header %}
+	{% include "site_main/site_main_header.html" %}
+{% endblock %}
+
+{% block main_content %}
+
+	{% block main_footer %}
+		{% include "site_main/site_main_footer.html" %}
+	{% endblock %}
+{% endblock %}

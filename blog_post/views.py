@@ -71,6 +71,7 @@ def category_delete(request):
 
 def blog_post_index(request):
 	args['blog_post_list'] = BlogPost.objects.all()
+	args['category_list'] = category_list = Category.objects.all()
 	return render(request, 'admin_blog_post_index.html', args)
 
 
@@ -80,23 +81,23 @@ def comments_index(request):
 
 
 def blog_post_add(request):
-	args['blog_post_list'] = blog_post_list = BlogPost.objects.all()
+	args['blog_post_list'] = BlogPost.objects.all()
 	if request.POST:
 		title = request.POST.get('title', '')
 		content = request.POST.get('content', '')
 		category = request.POST.get('category', '')
 		is_active = request.POST.get('is_active', 1)
-		current_blog_post = request.POST.get('id')
+
 		try:
-			new_post = Category.objects.get(id__exact=current_blog_post)
+			current_post = BlogPost.objects.get(id=request.POST.get('blogpost_id'))
 		except:
-			new_post = None
-		if new_post is not None:
-			new_post.title = title
-			new_post.content = content
-			new_post.category_name = category
-			new_post.is_active = is_active
-			new_post.save()
+			current_post = None
+		if current_post is not None:
+			current_post.title = title
+			current_post.content = content
+			current_post.category_id = category
+			current_post.is_active = is_active
+			current_post.save()
 			return render(request, 'sections/blog_post/blog_post_index.html', args)
 		else:
 			new_post_form = BlogPost_Form(request.POST)
@@ -104,7 +105,7 @@ def blog_post_add(request):
 				new_post = new_post_form.save(commit=False)
 				new_post.title = title
 				new_post.content = content
-				new_post.category_name = category
+				new_post.category_id = category
 				new_post.is_active = is_active
 				new_post.save()
 				return render(request, 'sections/blog_post/blog_post_index.html', args)

@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^blog-post/index/$', blog_views.blog_post_index, name="admin_blog_post_index"),
     url(r'^blog-post/add/$', blog_views.blog_post_add, name='admin_blogpost_add'),
     url(r'^comments/index/$', blog_views.comments_index, name="admin_comments_index"),
-    url(r'^accounts/', include('accounts.urls'))
+    url(r'^accounts/', include('accounts.urls')),
+    url(r'^home/', include('home.urls'))
 ]
